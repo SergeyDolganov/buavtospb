@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Продажа авто в СПб</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+    <!-- Шапка -->
+    <header class="bg-white shadow p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-bold">Авто СПб</h1>
+        <nav>
+            <a href="#catalog" class="ml-4 hover:underline">Каталог</a>
+            <a href="#form" class="ml-4 hover:underline">Заявка</a>
+            <a href="#contacts" class="ml-4 hover:underline">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1602940659805-d984389d3f2e?auto=format&fit=crop&w=1400&q=80');">
+        <div class="text-center">
+            <h2 class="text-4xl font-bold mb-4">Подберите подержанный авто в СПб</h2>
+            <a href="#catalog" class="bg-blue-600 px-6 py-2 rounded hover:bg-blue-700 transition">Смотреть каталог</a>
+        </div>
+    </section>
+
+    <!-- Основная часть -->
+    <main class="p-8 space-y-8">
+        <section id="catalog">
+            <h2 class="text-2xl font-semibold mb-6 text-center">Каталог автомобилей</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                {% for car in cars %}
+                <div class="bg-white rounded-lg shadow p-4">
+                    <img src="{{ car.image }}" alt="{{ car.model }}" class="w-full h-48 object-cover rounded mb-4">
+                    <h3 class="text-xl font-bold">{{ car.brand }} {{ car.model }}</h3>
+                    <p class="text-gray-700">Год: {{ car.year }}</p>
+                    <p class="text-gray-900 font-semibold">Цена: {{ "{:,.0f}".format(car.price) }} ₽</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <section class="text-center">
+            <p class="text-lg text-gray-600">Добро пожаловать! На первый сайт Долганова Сергея</p>
+        </section>
+
+        <section class="text-center">
+            <p class="text-gray-500">Продолжение скоро будет...</p>
+        </section>
+    </main>
+
+</body>
+</html>
